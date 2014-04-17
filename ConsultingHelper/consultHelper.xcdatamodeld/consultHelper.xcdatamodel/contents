@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1803" systemVersion="11E2620" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Company" representedClassName="Company" syncable="YES">
+        <attribute name="clientName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="companyName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imgPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="localImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="job" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="client" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="Reminder" representedClassName="Reminder" syncable="YES">
+        <attribute name="fireDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="notificationIdentifier" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="task" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="reminder" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="Task" representedClassName="Task" syncable="YES">
+        <attribute name="billingPeriodEnd" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="daysInBillingPeriod" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="deadline" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="hourScheduleNumDays" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="hoursWorked" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="jobDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="jobTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maximumHours" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="nextHourAddDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="numHoursToAdd" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="rate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="client" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="job" inverseEntity="Company" syncable="YES"/>
+        <relationship name="reminder" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Reminder" inverseName="task" inverseEntity="Reminder" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Company" positionX="160" positionY="192" width="128" height="135"/>
+        <element name="Reminder" positionX="612" positionY="216" width="128" height="90"/>
+        <element name="Task" positionX="394" positionY="159" width="128" height="255"/>
+    </elements>
+</model>
